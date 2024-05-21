@@ -4,6 +4,7 @@ import { get } from '../lib/api'
 import { grpcCall } from './grpc'
 import { setError } from './message'
 
+// TODO: remove this comment
 export function queryChanged (queryId, queryText) {
   return (dispatch, getState) => {
     const query = getState().queries.find(q => q.id === queryId)
