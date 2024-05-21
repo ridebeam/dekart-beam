@@ -26,6 +26,13 @@ jobs:
             touch ~/.ssh/known_hosts && \
             chmod 600 ~/.ssh/known_hosts && \
             ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - run:
+          name: create .npmrc file
+          command: |
+            echo "//npm.pkg.github.com/:_authToken=\${GITHUB_AUTH_TOKEN}" > ~/.npmrc
+            echo "@dekart-xyz:registry=https://npm.pkg.github.com" >> ~/.npmrc
+            
       - run:
           name: clone k8s-config
           command: git clone -b master git@github.com:ridebeam/k8s-config.git appcfg
